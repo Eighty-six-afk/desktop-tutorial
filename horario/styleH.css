@@ -1,0 +1,11 @@
+table{
+    border-radius: 3px;
+    border-color: rgb(rgb(101, 23, 23) rgb(47, 129, 47) rgb(227, 216, 12) / alpha);
+    text-align: center;
+    background-color: aqua;
+}
+td{
+    border-radius: 3px;
+    border-color: blue;
+    font-size: 12px;
+}

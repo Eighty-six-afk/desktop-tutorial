@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mi Actividad Web</title>
+  
+  <style>
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #080808;
+      color: #131314;
+    }
+
+    header {
+      background-color: #090909;
+      color: rgb(251, 245, 245);
+      text-align: center;
+      padding: 20px;
+    }
+
+    nav {
+      background-color: #252525;
+      text-align: center;
+    }
+
+    nav a {
+      color: rgb(89, 90, 92);
+      padding: 10px 15px;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    nav a:hover {
+      background-color: #18dcb5;
+    }
+
+    main {
+      width: 80%;
+      margin: 20px auto;
+    }
+
+    section {
+      background-color: rgb(185, 173, 173);
+      padding: 20px;
+      margin-bottom: 20px;
+      border: 2px solid #5506f4;
+    }
+
+    
+
+   
+   
+    form {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+label {display: block;}
+
+input[type=text], select {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+    pre {
+      background-color: #eee;
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #eee;
+    }
+
+    button {
+      background-color: #2c3e50;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #34495e;
+    }
+
+    footer {
+      background-color: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Guía de HTML, CSS y JavaScript</h1>
+    <p>Notas y apuntes de clase</p>
+  </header>
+
+  <nav>
+    <a href="#semantica">Semántica</a>
+    <a href="#texto">Texto</a>
+    <a href="#listas">Listas</a>
+    <a href="#tablas">Tablas</a>
+    <a href="#multimedia">Multimedia</a>
+    <a href="#formularios">Formularios</a>
+    <a href="#css">CSS</a>
+    <a href="#js">JavaScript</a>
+  </nav>
+  <main>
+
+    <section id="semantica">
+      <h2>1. Etiquetas semánticas de HTML5</h2>
+      <p>Sirven para estructurar la página web según la función de cada parte</p>
+      
+      <table>
+        <tr>
+          <th>Etiqueta</th>
+          <th>Uso</th>
+        </tr>
+        <tr>
+          <td>&lt;header&gt;</td>
+          <td>Encabezado principal</td>
+        </tr>
+        <tr>
+          <td>&lt;nav&gt;</td>
+          <td>Menú con enlaces</td>
+        </tr>
+        <tr>
+          <td>&lt;main&gt;</td>
+          <td>Contenido principal</td>
+        </tr>
+        <tr>
+          <td>&lt;section&gt;</td>
+          <td>Sección de contenido</td>
+        </tr>
+        <tr>
+          <td>&lt;footer&gt;</td>
+          <td>Pie de página</td>
+        </tr>
+      </table>
+    </section>
+
+    <section id="texto">
+      <h2>2. Texto y Enlaces</h2>
+      <p>Uso de párrafos, texto resaltado y enlaces a otras páginas:</p>
+      
+      <pre><code>&lt;p&gt;Este es un párrafo con <br> &lt;strong&gt;negrita&lt;/strong&gt;<br> y &lt;em&gt;cursiva&lt;/em&gt;.&lt;/p&gt;
+&lt;a href="https://www.google.com"<br> target="_blank"&gt;Ir a Google&lt;/a&gt;</code></pre>
+
+      <p>Ejemplo: Este es un párrafo con <strong>negrita</strong> y <em>cursiva</em>.</p>
+      <a href="https://www.google.com" target="_blank">Enlace a Google</a>
+    </section>
+
+    <section id="listas">
+      <h2>3. Listas</h2>
+      <p>Ejemplo de lista desordenada y ordenada:</p>
+      
+      <h3>Lista no ordenada</h3>
+      <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+      </ul>
+
+      <h3>Lista ordenada</h3>
+      <ol>
+        <li>Abrir el editor</li>
+        <li>Escribir el código</li>
+        <li>Guardar archivo</li>
+      </ol>
+    </section>
+
+    <section id="tablas">
+      <h2>4. Tablas</h2>
+      <p>Tabla básica para organizar datos:</p>
+
+      <table>
+        <tr>
+          <th>Materia</th>
+          <th>Horario</th>
+        </tr>
+        <tr>
+          <td>Programación Web</td>
+          <td>12:00 - 14:00</td>
+        </tr>
+        <tr>
+          <td>Bases de Datos</td>
+          <td>14:00 - 16:00</td>
+        </tr>
+      </table>
+    </section>
+
+    <section id="multimedia">
+      <h2>5. Multimedia</h2>
+      <p>Etiqueta para agregar video con controles:</p>
+      <pre><code>&lt;video controls width="320"&gt;
+  &lt;source src="Video.mp4" type="Video/mp4"&gt;
+&lt;/video&gt;</code></pre>
+    </section>
+
+    <section id="formularios">
+      <h2>6. Formularios</h2>
+      <p>Formulario con diseño y estilo CSS</p>
+
+<form onsubmit="event.preventDefault();alert('Formulario enviado correctamente');">
+  <label for="fname">primer nombre</label>
+  <input type="text" id="fname" name="firstname" placeholder="tu nombre..">
+
+  <label for="lname">Apellido</label>
+  <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+
+  <label for="country">Pais</label>
+  <select id="country" name="country">
+    <option value="australia">Australia</option>
+    <option value="canada">Canada</option>
+    <option value="usa">USA</option>
+  </select>
+
+  <input type="submit" value="Submit">
+</form>
+</section>
+
+
+    <section id="css">
+      <h2>7. CSS</h2>
+      <p>Reglas sencillas para darle color y formato a la página:</p>
+      <pre><code>body {
+  font-family: Arial, sans-serif;
+  color: #333;
+}</code></pre>
+    </section>
+
+    <section id="js">
+      <h2>8. JavaScript</h2>
+      <p>Ejemplo de función interactiva con un botón:</p>
+      <pre><code>alert("Hola!");</code></pre>
+      <br>
+      <button onclick="alert('¡Hola!')">Hacer clic</button>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Mi pagina web</p>
+  </footer>
+
+</body>
+</html>
