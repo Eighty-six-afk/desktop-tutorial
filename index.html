@@ -3,67 +3,559 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio de Proyectos - Alexis</title>
+    <title>Portafolio de Trabajos - 5to Semestre</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+    <style>
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-color: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #f8fafc;
+            --accent-hover: #38bdf8;
+            --border: #334155;
+            --code-bg: #0b1120;
+        }
+
+        button#theme-toggle-btn {
+            background-color: transparent;
+            color: var(--text-color);
+            border: 1px solid var(--border);
+            padding: 8px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        button#theme-toggle-btn:hover {
+            border-color: var(--text-color);
+        }
+        :root {
+            --bg-color: #fafafa;
+            --card-bg: #ffffff;
+            --text-color: #111827;
+            --text-muted: #6b7280;
+            --accent: #111827;
+            --accent-hover: #374151;
+            --border: #e5e7eb;
+            --code-bg: #f6f8fa;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 40px 24px;
+            line-height: 1.5;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto 40px auto;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: var(--text-color);
+        }
+
+        button#toggle-view-btn {
+            background-color:#030303;
+            color: #f0eded;
+            border: 1px solid var(--accent);
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        button#toggle-view-btn:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .view-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        #classic-view {
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        #classic-view ul {
+            line-height: 1.9;
+            padding-left: 20px;
+        }
+
+        #classic-view a {
+            color: var(--text-color);
+            text-decoration: underline;
+            text-decoration-color: #d1d5db;
+            text-underline-offset: 3px;
+        }
+
+        #classic-view a:hover {
+            text-decoration-color: var(--text-color);
+        }
+
+        #advanced-view {
+            display: none;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 12px 16px;
+            margin-bottom: 36px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            background: var(--card-bg);
+            color: var(--text-color);
+            font-size: 0.95rem;
+            box-sizing: border-box;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .search-box:focus {
+            border-color: var(--accent);
+        }
+
+        .category-section {
+            margin-bottom: 40px;
+        }
+
+        .category-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 16px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 16px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 8px;
+            transition: border-color 0.2s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .card:hover {
+            border-color: #9ca3af;
+        }
+
+        .card p {
+            margin: 4px 0 0 0;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        .card strong {
+            color: var(--text-color);
+            font-size: 0.975rem;
+            font-weight: 600;
+        }
+
+        .card-links {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.875rem;
+        }
+
+        .card a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .card a:hover {
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .btn-code {
+            background-color: transparent;
+            color: var(--text-muted);
+            border: 1px solid var(--border);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-left: auto;
+        }
+
+        .btn-code:hover {
+            color: var(--text-color);
+            border-color: var(--text-color);
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(17, 24, 39, 0.4);
+            backdrop-filter: blur(2px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            width: 100%;
+            max-width: 850px;
+            max-height: 85vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .modal-title {
+            font-weight: 500;
+            color: var(--text-color);
+            font-size: 0.9rem;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-copy, .btn-close {
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.8rem;
+            transition: background-color 0.2s;
+        }
+
+        .btn-copy {
+            background-color: var(--accent);
+            color: #030303;
+            border-color: var(--accent);
+        }
+
+        .btn-copy:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .btn-close {
+            background-color: var(--card-bg);
+            color: var(--text-color);
+        }
+
+        .btn-close:hover {
+            background-color: var(--bg-color);
+        }
+
+        .modal-body {
+            padding: 20px;
+            overflow: auto;
+            background: var(--code-bg);
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+
+        pre {
+            margin: 0;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 0.875rem;
+        }
+    </style>
 </head>
 <body>
 
-    <h1>Portafolio de Trabajos Prácticos</h1>
-    <ul>
-        <li>
-            <strong>Faro Democrático:</strong>
-            <a href="faroDemocratico/MiPaginaWebPM.html">Página Web PM</a>
-        </li>
-        <li>
-            <strong>Formulario:</strong>
-            <a href="formulario/formulario.html">Formulario HTML</a>
-        </li>
-        <li>
-            <strong>Framework:</strong>
-            <a href="framework/framework.html">Framework HTML</a>
-        </li>
-        <li>
-            <strong>Horario:</strong>
-            <a href="horario/horario.html">Horario de Clases</a>
-        </li>
-        <li>
-            <strong>Página Web por Partes:</strong>
-            <a href="pagWebPartes/MiPaginaWebPM.html">Mi Página Web PM</a> | 
-            <a href="pagWebPartes/PagWeb.html">Página Web</a>
-        </li>
-        <li>
-            <strong>Tabla Periódica:</strong>
-            <a href="tabla_periodica/TB.html">Tabla Principal</a>
-        </li>
-        <li>
-            <strong>Trabajos Varios:</strong>
-            <ul>
-                <li><a href="trabajos/index.html">Index Trabajos</a></li>
-                <li><a href="trabajos/dos.html">Página Dos</a></li>
-                <li><a href="trabajos/uno.html">Página Uno</a></li>
-                <li><a href="trabajos/HorarioClase.html">Horario Clase</a></li>
-                <li><a href="trabajos/imagen.html">Prueba Imagen</a></li>
-                <li><a href="trabajos/tabla.html">Tabla</a></li>
-                <li><a href="trabajos/favicom.html">Favicon</a></li>
-            </ul>
-             <strong>Trabajos Segundo Psrcial:</strong>
-            <ul>
-                <li><a href="segundoparcial/aprendijs.html"> APRENDIENDO JS</a></li>
-                <li><a href="segundoparcial/calculadora.html"> CALCULADORA BASICA</a></li>
-                <li><a href="segundoparcial/condicion.html"> IF...ELSE</a></li>
-                <li><a href="segundoparcial/datos.html">DATOS PERSONALES </a></li>
-                <li><a href="segundoparcial/getElementById.html"> getElementById</a></li>
-                <li><a href="segundoparcial/getElementsByClassName.html">getElementsByClassName</a></li>
-                <li><a href="segundoparcial/resta.html">Resta</a></li>
-                <li><a href="segundoparcial/suma.html">SUMA</a></li>
-                <li><a href="segundoparcial/inner.html">Ejemplo innerHTML - Cambiar texto</a></li>
-                <li><a href="segundoparcial/inner2.html"></a>Ejemplo innerHTML - Agregar imagen</li>
-                <li><a href="segundoparcial/getElementMensaje.html">Ejemplo getElementById - Mostrar mensaje</a></li>
-                <li><a href="segundoparcial/getElementColor.html">Ejemplo getElementById - Cambiar color</a></li>
-                <li><a href="segundoparcial/querySelector2.html">Ejemplo querySelector - Por clase</a></li>
-                <li><a href="segundoparcial/querySelector.html">Ejemplo querySelector - Deshabilitar botón</a></li>
-            </ul>
-        </li>
-    </ul>
+   <header>
+        <h1>Portafolio de Trabajos - 5to Semestre</h1>
+        <div style="display: flex; gap: 10px;">
+            <button id="theme-toggle-btn">🌙 Modo Oscuro</button>
+            <button id="toggle-view-btn">Cambiar a Diseño Avanzado_IA</button>
+        </div>
+    </header>
 
+    <div class="view-container">
+        
+        <div id="classic-view">
+            <ul>
+                <li><strong>Faro Democrático:</strong> <a href="faroDemocratico/MiPaginawebPM.html">Página Web PM</a></li>
+                <li><strong>Formulario:</strong> <a href="formulario/formulario.html">Formulario HTML</a></li>
+                <li><strong>Framework:</strong> <a href="framework/framework.html">Framework HTML</a></li>
+                <li><strong>Horario:</strong> <a href="horario/horario.html">Horario de Clases</a></li>
+                <li><strong>Página Web por Partes:</strong> 
+                    <a href="pagWebPartes/MiPaginawebPM.html">Mi Página Web PM</a> | 
+                    <a href="pagWebPartes/PagWeb.html">Página Web</a>
+                </li>
+                <li><strong>Tabla Periódica:</strong> <a href="tabla_periodica/TB.html">Tabla Principal</a></li>
+                <li><strong>Trabajos Varios:</strong>
+                    <ul>
+                        <li><a href="trabajos/index.html">Index Trabajos</a></li>
+                        <li><a href="trabajos/dos.html">Página Dos</a></li>
+                        <li><a href="trabajos/uno.html">Página Uno</a></li>
+                        <li><a href="trabajos/HorarioClase.html">Horario Clase</a></li>
+                        <li><a href="trabajos/imagen.html">Prueba Imagen</a></li>
+                        <li><a href="trabajos/tabla.html">Tabla</a></li>
+                        <li><a href="trabajos/favicom.html">Favicon</a></li>
+                    </ul>
+                </li>
+                <li><strong>Trabajos Segundo Parcial:</strong>
+                    <ul>
+                        <li><a href="segundoparcial/aprendijs.html">APRENDIENDO JS</a></li>
+                        <li><a href="segundoparcial/calculadora.html">CALCULADORA BASICA</a></li>
+                        <li><a href="segundoparcial/condicion.html">IF...ELSE</a></li>
+                        <li><a href="segundoparcial/datos.html">DATOS PERSONALES</a></li>
+                        <li><a href="segundoparcial/getElementById.html">getElementById</a></li>
+                        <li><a href="segundoparcial/getElementsByClassName.html">getElementsByClassName</a></li>
+                        <li><a href="segundoparcial/resta.html">Resta</a></li>
+                        <li><a href="segundoparcial/suma.html">SUMA</a></li>
+                        <li><a href="segundoparcial/inner.html">Ejemplo innerHTML - Cambiar texto</a></li>
+                        <li><a href="segundoparcial/inner2.html">Ejemplo innerHTML - Agregar imagen</a></li>
+                        <li><a href="segundoparcial/getElementMensaje.html">Ejemplo getElementById - Mostrar mensaje</a></li>
+                        <li><a href="segundoparcial/getElementColor.html">Ejemplo getElementById - Cambiar color</a></li>
+                        <li><a href="segundoparcial/querySelector2.html">Ejemplo querySelector - Por clase</a></li>
+                        <li><a href="segundoparcial/querySelector.html">Ejemplo querySelector - Deshabilitar botón</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div id="advanced-view">
+            <input type="text" id="search-input" class="search-box" placeholder="Buscar práctica o proyecto...">
+
+            <div class="category-section">
+                <div class="category-title">Maquetación y Estructuras (HTML/CSS)</div>
+                <div class="grid-cards">
+                    <div class="card">
+                        <div><strong>Faro Democrático</strong><p>Página Web PM</p></div>
+                        <div class="card-links"><a href="faroDemocratico/MiPaginawebPM.html">Ver práctica →</a></div>
+                    </div>
+                    <div class="card">
+                        <div><strong>Formulario</strong><p>Formulario HTML</p></div>
+                        <div class="card-links"><a href="formulario/formulario.html">Ver práctica →</a></div>
+                    </div>
+                    <div class="card">
+                        <div><strong>Framework</strong><p>Framework HTML</p></div>
+                        <div class="card-links"><a href="framework/framework.html">Ver práctica →</a></div>
+                    </div>
+                    <div class="card">
+                        <div><strong>Horario</strong><p>Horario de Clases</p></div>
+                        <div class="card-links"><a href="horario/horario.html">Ver práctica →</a></div>
+                    </div>
+                    <div class="card">
+                        <div><strong>Página Web por Partes</strong><p>Modularización web</p></div>
+                        <div class="card-links">
+                            <a href="pagWebPartes/MiPaginawebPM.html">Parte 1</a> · 
+                            <a href="pagWebPartes/PagWeb.html">Parte 2</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div><strong>Tabla Periódica</strong><p>Tabla Principal</p></div>
+                        <div class="card-links"><a href="tabla_periodica/TB.html">Ver práctica →</a></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-section">
+                <div class="category-title">Programación en JavaScript (DOM y Lógica)</div>
+                <div class="grid-cards">
+                    <div class="card"><div><strong>APRENDIENDO JS</strong></div><div class="card-links"><a href="segundoparcial/aprendijs.html">Abrir →</a></div></div>
+                    <div class="card"><div><strong>CALCULADORA BASICA</strong></div><div class="card-links"><a href="segundoparcial/calculadora.html">Abrir →</a></div></div>
+                    <div class="card"><div><strong>IF...ELSE</strong></div><div class="card-links"><a href="segundoparcial/condicion.html">Abrir →</a></div></div>
+                    <div class="card"><div><strong>DATOS PERSONALES</strong></div><div class="card-links"><a href="segundoparcial/datos.html">Abrir →</a></div></div>
+                    <div class="card"><div><strong>getElementById</strong></div><div class="card-links"><a href="segundoparcial/getElementById.html">Abrir →</a></div></div>
+                    <div class="card"><div><strong>getElementsByClassName</strong></div><div class="card-links"><a href="segundoparcial/getElementsByClassName.html">Abrir →</a></div></div>
+                    <div class="card"><div><strong>Resta</strong></div><div class="card-links"><a href="segundoparcial/resta.html">Abrir →</a></div></div>
+                    <div class="card"><div><strong>Suma</strong></div><div class="card-links"><a href="segundoparcial/suma.html">Abrir →</a></div></div>
+                    <div class="card"><div><strong>Ejemplo innerHTML</strong><p>Cambiar texto</p></div><div class="card-links"><a href="segundoparcial/inner.html">Abrir →</a></div></div>
+                    <div class="card"><div><strong>Ejemplo innerHTML</strong><p>Agregar imagen</p></div><div class="card-links"><a href="segundoparcial/inner2.html">Abrir →</a></div></div>
+                    <div class="card"><div><strong>Ejemplo getElementById</strong><p>Mostrar mensaje</p></div><div class="card-links"><a href="segundoparcial/getElementMensaje.html">Abrir →</a></div></div>
+                    <div class="card"><div><strong>Ejemplo getElementById</strong><p>Cambiar color</p></div><div class="card-links"><a href="segundoparcial/getElementColor.html">Abrir →</a></div></div>
+                    <div class="card"><div><strong>Ejemplo querySelector</strong><p>Por clase</p></div><div class="card-links"><a href="segundoparcial/querySelector2.html">Abrir →</a></div></div>
+                    <div class="card"><div><strong>Ejemplo querySelector</strong><p>Deshabilitar botón</p></div><div class="card-links"><a href="segundoparcial/querySelector.html">Abrir →</a></div></div>
+                </div>
+            </div>
+
+            <div class="category-section">
+                <div class="category-title">Prácticas y Trabajos Varios</div>
+                <div class="grid-cards">
+                    <div class="card"><div><strong>Index Trabajos</strong></div><div class="card-links"><a href="trabajos/index.html">Abrir →</a></div></div>
+                    <div class="card"><div><strong>Página Dos</strong></div><div class="card-links"><a href="trabajos/dos.html">Abrir →</a></div></div>
+                    <div class="card"><div><strong>Página Uno</strong></div><div class="card-links"><a href="trabajos/uno.html">Abrir →</a></div></div>
+                    <div class="card"><div><strong>Horario Clase</strong></div><div class="card-links"><a href="trabajos/HorarioClase.html">Abrir →</a></div></div>
+                    <div class="card"><div><strong>Prueba Imagen</strong></div><div class="card-links"><a href="trabajos/imagen.html">Abrir →</a></div></div>
+                    <div class="card"><div><strong>Tabla</strong></div><div class="card-links"><a href="trabajos/tabla.html">Abrir →</a></div></div>
+                    <div class="card"><div><strong>Favicon</strong></div><div class="card-links"><a href="trabajos/favicom.html">Abrir →</a></div></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="code-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span id="modal-filename" class="modal-title">archivo.html</span>
+                <div class="modal-actions">
+                    <button id="copy-code-btn" class="btn-copy">Copiar código</button>
+                    <button id="close-modal-btn" class="btn-close">Cerrar</button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <pre><code id="code-display" class="language-html">Cargando...</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        const toggleBtn = document.getElementById('toggle-view-btn');
+        const classicView = document.getElementById('classic-view');
+        const advancedView = document.getElementById('advanced-view');
+        const searchInput = document.getElementById('search-input');
+        const cards = document.querySelectorAll('.card');
+
+        const codeModal = document.getElementById('code-modal');
+        const modalFilename = document.getElementById('modal-filename');
+        const codeDisplay = document.getElementById('code-display');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        const copyCodeBtn = document.getElementById('copy-code-btn');
+
+        let isAdvanced = false;
+
+        toggleBtn.addEventListener('click', () => {
+            isAdvanced = !isAdvanced;
+            if (isAdvanced) {
+                classicView.style.display = 'none';
+                advancedView.style.display = 'block';
+                toggleBtn.textContent = 'Cambiar a Diseño Clásico';
+            } else {
+                classicView.style.display = 'block';
+                advancedView.style.display = 'none';
+                toggleBtn.textContent = 'Cambiar a Diseño Avanzado';
+            }
+        });
+
+        searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            cards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                card.style.display = text.includes(term) ? 'flex' : 'none';
+            });
+        });
+
+        cards.forEach(card => {
+            const linksContainer = card.querySelector('.card-links');
+            const firstLink = linksContainer.querySelector('a');
+            
+            if (firstLink) {
+                const codeBtn = document.createElement('button');
+                codeBtn.className = 'btn-code';
+                codeBtn.textContent = '</> Código';
+                
+                codeBtn.addEventListener('click', () => {
+                    const fileUrl = firstLink.getAttribute('href');
+                    openCodeModal(fileUrl);
+                });
+
+                linksContainer.appendChild(codeBtn);
+            }
+        });
+
+        async function openCodeModal(url) {
+            modalFilename.textContent = url;
+            codeDisplay.textContent = 'Cargando código...';
+            codeModal.style.display = 'flex';
+
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error('No se pudo cargar el archivo.');
+                const text = await response.text();
+                codeDisplay.textContent = text;
+                hljs.highlightElement(codeDisplay);
+            } catch (error) {
+                codeDisplay.textContent = 
+                    '⚠️ No se pudo leer el archivo automáticamente.\n\n' +
+                    'Si estás abriendo esta página con doble clic (file:///C:/...), ' +
+                    'el navegador bloquea la lectura de otros archivos por seguridad.\n\n' +
+                    'Solución: Ábrelo usando Live Server en VS Code o mediante tu servidor local (AMPPS / localhost).';
+            }
+        }
+
+        closeModalBtn.addEventListener('click', () => {
+            codeModal.style.display = 'none';
+        });
+
+        codeModal.addEventListener('click', (e) => {
+            if (e.target === codeModal) {
+                codeModal.style.display = 'none';
+            }
+        });
+
+        copyCodeBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText(codeDisplay.textContent).then(() => {
+                copyCodeBtn.textContent = '¡Copiado!';
+                setTimeout(() => {
+                    copyCodeBtn.textContent = 'Copiar código';
+                }, 2000);
+            });
+        });
+        const themeToggleBtn = document.getElementById('theme-toggle-btn');
+        
+        themeToggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            if (document.body.classList.contains('dark-mode')) {
+                themeToggleBtn.textContent = '☀️ Modo Claro';
+            } else {
+                themeToggleBtn.textContent = '🌙 Modo Oscuro';
+            }
+        });
+    </script>
 </body>
 </html>
